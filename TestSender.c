@@ -13,7 +13,7 @@ int Generate_SensorData()
     {
     Temperature[i] = rand()%50;
     Soc[i] = rand()%50;
-    printf("sendorData_Temperature=%d sendorData_Soc=%d, \n",Temperature[i],Soc[i]);
+    printf("sendorData_Temperature=%d sendorData_Soc=%d\n",Temperature[i],Soc[i]);
     }
     return 0;
 }
