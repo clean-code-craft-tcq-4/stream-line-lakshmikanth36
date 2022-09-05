@@ -20,6 +20,6 @@ int Generate_SensorData()
 
 int main()
 {
-    Generate_SensorData();
+    assert(Generate_SensorData()==0);
     return 0;
 }
