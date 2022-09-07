@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #define MAX_VALUE   50
 #define TEMP_RANGE  50
 #define SOC_RANGE   50
