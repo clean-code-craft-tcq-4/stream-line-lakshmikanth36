@@ -4,7 +4,7 @@
 
 int GenerateSensorData(int Datasize,sensorValue *sensorData)
 {
-    char buffer[CHAR_MAX] = {NULL};
+    char buffer[CHAR_MAX] = {0};
     if(Datasize && (sensorData!=NULL))
     {
         for(int i=0;i<Datasize;i++)
