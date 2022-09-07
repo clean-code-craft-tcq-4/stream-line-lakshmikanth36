@@ -16,6 +16,10 @@ int GenerateSensorData(int Datasize,sensorValue *sensorData)
         sprintf(buffer,"%d,%d\n",sensorData->Temperature[i],sensorData->Soc[i]);
         DisplayToConsole(buffer);
         }
-     }
-     return 0;	
- }
+        return DATA_OK;
+    }
+    else
+    {
+        return DATA_NOT_OK;
+    }
+}
