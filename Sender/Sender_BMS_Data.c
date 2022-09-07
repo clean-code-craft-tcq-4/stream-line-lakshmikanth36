@@ -6,7 +6,6 @@ void DisplayToConsole(char* buffer)
 {
 	printf("%s",buffer);
 }
-
 int GenerateSensorData(int Datasize,sensorValue *sensorData)
 {
     char buffer[CHAR_MAX] = {0};
@@ -19,10 +18,5 @@ int GenerateSensorData(int Datasize,sensorValue *sensorData)
         sprintf(buffer,"%d,%d\n",sensorData->Temperature[i],sensorData->Soc[i]);
         DisplayToConsole(buffer);
         }
-        return DATA_OK;
-    }
-    else
-    {
-        return DATA_NOT_OK;
-    }
+        return 0;
 }
