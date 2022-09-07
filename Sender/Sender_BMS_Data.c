@@ -17,4 +17,5 @@ int GenerateSensorData(int Datasize,sensorValue *sensorData)
         DisplayToConsole(buffer);
         }
      }
+     return 0;	
  }
