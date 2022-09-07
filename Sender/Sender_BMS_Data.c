@@ -1,5 +1,3 @@
-#include "Sender_BMS_Data.h"
-
 int GenerateSensorData(int Datasize,sensorValue *sensorData)
 {
     char buffer[CHAR_MAX] = {NULL};
