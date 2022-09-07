@@ -3,7 +3,8 @@
 int main()
 {
     sensorValue sensorData[MAX_VALUE];
-    //assert(GenerateSensorData(MAX_VALUE,sensorData)==0);
+    assert(GenerateSensorData(MAX_VALUE,sensorData)==0);
     assert(!GenerateSensorData(MAX_VALUE,NULL));
+    assert(!GenerateSensorData(-1,NULL));
     return 0;
 }
