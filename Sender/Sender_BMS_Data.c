@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "Sender_BMS_Data.h"
 
+void DisplayToConsole(char* buffer)
+{
+	printf("%s",buffer);
+}
+
 int GenerateSensorData(int Datasize,sensorValue *sensorData)
 {
     char buffer[CHAR_MAX] = {0};
