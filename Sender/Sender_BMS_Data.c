@@ -1,13 +1,19 @@
 #include "Sender_BMS_Data.h"
 
-void DisplayToConsole(char* buffer)
+int DisplayToConsole(char* buffer)
 {
+	int flag=0;
+	if(buffer!=0)
+	{
+	flag=1;
 	printf("%s",buffer);
+	}
+	return flag;
 }
 int GenerateSensorData(int Datasize,sensorValue *sensorData)
 {
     char buffer[CHAR_MAX] = {0};
-    if(Datasize && (sensorData!=NULL))
+    if((Datasize > 0) && (sensorData!=NULL))
     {
         for(int i=0;i<Datasize;i++)
         {
@@ -18,8 +24,5 @@ int GenerateSensorData(int Datasize,sensorValue *sensorData)
         }
         return DATA_OK;
     }
-    else
-    {
-        return DATA_NOT_OK;
-    }
+    return DATA_NOT_OK;
 }
