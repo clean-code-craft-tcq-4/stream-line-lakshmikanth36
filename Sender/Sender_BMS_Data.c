@@ -1,26 +1,23 @@
 #include "Sender_BMS_Data.h"
 
-int DisplayToConsole(char* buffer)
+/********This Function will prints the battery parameters & displayed in console************************/
+void DisplayToConsole(char* buffer)
 {
-	int flag=0;
-	if(buffer!=0)
-	{
-	flag=1;
 	printf("%s",buffer);
-	}
-	return flag;
 }
-int GenerateSensorData(int Datasize,sensorValue *sensorData)
+
+/******* This Function will Generate battery parameter & process for display **************************/
+int GenerateSensorData(int datasize,sensorValue *sensorData)
 {
     char buffer[CHAR_MAX] = {0};
-    if((Datasize > 0) && (sensorData!=NULL))
+    if((datasize > 0) && (sensorData!=NULL))
     {
-        for(int i=0;i<Datasize;i++)
+        for(int i=0;i<datasize;i++)
         {
-        sensorData->Temperature[i] = rand()%TEMP_RANGE;
-        sensorData->Soc[i] = rand()%SOC_RANGE;
-        sprintf(buffer,"%d,%d\n",sensorData->Temperature[i],sensorData->Soc[i]);
-        DisplayToConsole(buffer);
+        	sensorData->Temperature[i] = rand()%TEMP_RANGE;
+        	sensorData->Soc[i] = rand()%SOC_RANGE;
+        	sprintf(buffer,"%d,%d\n",sensorData->Temperature[i],sensorData->Soc[i]);
+		DisplayToConsole(buffer);
         }
         return DATA_OK;
     }
