@@ -10,5 +10,5 @@ typedef struct {
 	int Temperature[MAX_VALUE];
 	int Soc[MAX_VALUE];
 } sensorValue;
-void DisplayToConsole(char* buffer);
+int DisplayToConsole(char* buffer);
 int GenerateSensorData(int Datasize,sensorValue *sensorData);
