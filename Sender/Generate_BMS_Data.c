@@ -11,7 +11,6 @@ int GenerateSensorData(sensorValue *sensorData)
         	sensorData->Temperature[i] = rand()%TEMP_RANGE;
         	sensorData->Soc[i] = rand()%SOC_RANGE;
         	sprintf(buffer,"%d,%d\n",sensorData->Temperature[i],sensorData->Soc[i]);
-			DisplayToConsole(buffer);
         }
         return DATA_OK;
     }
