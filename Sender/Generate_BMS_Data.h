@@ -29,8 +29,7 @@ typedef struct {
 sensorValue bmsData;
 
 int Temp_fileDirectory[2];
-int id;
-char dataArray[MAXNOOFBMSDATA]; 
+int id; 
 
 int GenerateSensorData(int datasize,sensorValue *sensorData);
 void DisplayToConsole(char* buffer);
