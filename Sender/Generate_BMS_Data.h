@@ -31,7 +31,7 @@ sensorValue bmsData;
 int Temp_fileDirectory[2];
 int id; 
 
-int GenerateSensorData(int datasize,sensorValue *sensorData);
+int GenerateSensorData(sensorValue *sensorData);
 void DisplayToConsole(char* buffer);
 int config_PIPE(int *tempFD);
 int writeToFileDirectory(sensorValue *sensorData);
