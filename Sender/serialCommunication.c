@@ -41,7 +41,7 @@ void sender(int fd[], char senderdata[], int length)
 {
   	close(fd[0]);
 		
-	write(fd[1], senderdata, len);
+	write(fd[1], senderdata, length);
 		
 	close(fd[1]);
 	printf("sender: %s",senderdata);
