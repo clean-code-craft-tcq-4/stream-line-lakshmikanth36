@@ -26,10 +26,8 @@ typedef struct {
 	int Soc[MAX_VALUE];
 } sensorValue;
 
-sensorValue bmsData;
-
-int Temp_fileDirectory[2];
-int id; 
+extern int Temp_fileDirectory[2];
+extern int id; 
 
 int GenerateSensorData(sensorValue *sensorData);
 void DisplayToConsole(char* buffer);
