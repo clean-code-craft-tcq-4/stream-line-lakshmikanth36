@@ -1,5 +1,8 @@
 #include "Generate_BMS_Data.h"
 
+int Temp_fileDirectory[2];
+int id; 
+
 int config_PIPE(int *tempFD)
 {
 	
