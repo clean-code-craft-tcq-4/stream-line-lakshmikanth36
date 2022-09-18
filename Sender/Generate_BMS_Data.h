@@ -18,7 +18,7 @@
 #define DATA_NOT_OK 1
 
 #define MAXSENSORCNT   2
-#define BMSDATA         8
+#define LENGTH_OF_BMSDATA         8
 #define MAX_NOOF_BMSDATA  (MAXSENSORCNT * MAX_VALUE * BMSDATA)
 
 typedef struct {
@@ -26,12 +26,13 @@ typedef struct {
 	int Soc[MAX_VALUE];
 } sensorValue;
 
-extern int Temp_fileDirectory[2];
+extern int BMS_fileDirectory[2];
 extern int id; 
 
 int GenerateSensorData(sensorValue *sensorData);
 void DisplayToConsole(char* buffer);
 int config_PIPE(int *tempFD);
 int writeToFileDirectory(sensorValue *sensorData);
+void convertInt_To_String(char dataArray[], sensorValue *sensorData);
 void sender(int fd[], char senderdata[], int length);
 
