@@ -129,9 +129,6 @@ void print_Soc_MinMaxData(int minSocData, int maxSocData)
 
 void BMSData_Statistics(char receive_BMSdata[], int datasize)
 {
-    int BatteryTempdata[50];
-    int BatterySOCdata[50];
-    int AvgofTemp = 0, AvgofSOC = 0;;
     
     convertString_To_Int(receive_BMSdata,datasize,BatteryTempdata,BatterySOCdata);
 	
