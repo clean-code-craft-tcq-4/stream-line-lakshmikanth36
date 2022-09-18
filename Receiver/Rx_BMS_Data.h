@@ -14,6 +14,6 @@ typedef enum
 }receiveData;
 
 void Receiver(int file_directory[]);
-void ReadData_From_Console(receiveData rx_type);
+void ReadData_From_Console(receiveData rx_type, char ReadBMS_data[])
 void Read_from_PIPE(char ReadBMS_data[]);
 void Read_mock_data(char ReadBMS_data[]);
