@@ -57,3 +57,18 @@ void sender(int file_directory[], char BMSdatas[], int length)
 	close(file_directory[1]);
 	//printf("sender: %s",BMSdatas);
 }
+
+int Generate_Transmit_BMS_data(sensorValue *sensorData)
+{
+  int PipeStatus, Tx_Ack;
+	
+  GenerateSensorData(sensorData);
+  
+  PipeStatus = config_PIPE(BMS_fileDirectory);
+  
+  if(PipeStatus == TRUE)
+  {
+    Tx_Ack = writeToFileDirectory(sensorData);
+  }
+  return Tx_Ack;
+}
