@@ -34,3 +34,5 @@ int config_PIPE(int *tempFD);
 int writeToFileDirectory(sensorValue *sensorData);
 void convertInt_To_String(char dataArray[], sensorValue *sensorData);
 void sender(int file_directory[], char senderdata[], int length);
+int Generate_Transmit_BMS_data(sensorValue *sensorData);
+
