@@ -19,7 +19,7 @@
 
 #define MAXSENSORCNT   2
 #define LENGTH_OF_BMSDATA         8
-#define MAX_NOOF_BMSDATA  (MAXSENSORCNT * MAX_VALUE * BMSDATA)
+#define MAX_NOOF_BMSDATA  (MAXSENSORCNT * MAX_VALUE * LENGTH_OF_BMSDATA)
 
 typedef struct {
 	int Temperature[MAX_VALUE];
