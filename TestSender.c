@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "Sender/Generate_BMS_Data.h"
+#include "Generate_BMS_Data.h"
 int main()
 {
     sensorValue sensorData[MAX_VALUE];
