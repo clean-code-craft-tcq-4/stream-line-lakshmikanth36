@@ -1,5 +1,7 @@
 #include "BMS_Statistics.h"
 
+static int BMSdataIndex = 0;
+
 void sortGivenIndexPosition(int *BatteryTempdata, int *BatterySOCdata, int noOfElements, int received_position) {
 	int temp;
 	
@@ -45,7 +47,6 @@ void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[]
 {
     int index;
     char BMSdata[4];
-    static int BMSTempIndex = 0, BMSSocIndex = 0, BMSdataIndex = 0;
     
     memset(BMSdata, '\0', sizeof(BMSdata));
     
@@ -60,27 +61,42 @@ void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[]
                 //printf("%c",BMSdata[BMSdataIndex]);
                 BMSdataIndex++;
             }
-            else if(receive_BMSdata[index] == ',')
-            {
-                BatteryTempdata[BMSTempIndex] = atoi(BMSdata);
-                //printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
-                ++BMSTempIndex;
-                BMSdataIndex = 0;
-                memset(BMSdata, '\0', sizeof(BMSdata));
-            } 
-            if(receive_BMSdata[index] == '\n')
-            {
-                BatterySOCdata[BMSSocIndex] = atoi(BMSdata);
-                //printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
-                ++BMSSocIndex;
-                BMSdataIndex = 0;
-                memset(BMSdata, '\0', sizeof(BMSdata));
-            }
+            convertBatteryTempData_To_Int(receive_BMSdata[index], BatteryTempdata, BMSdata, sizeof(BMSdata));
+		
+	    convertBatterySocData_To_Int(receive_BMSdata[index], BatterySOCdata, BMSdata, sizeof(BMSdata));
         }
         else
         {
             break;
         }
+    }
+}
+
+void convertBatteryTempData_To_Int(int receive_BMSdata, int BatteryTempdata[], char BMSdata[], int BMSData_length)
+{
+    static int BMSTempIndex = 0;
+    
+    if((receive_BMSdata == ',') && (receive_BMSdata != '\n'))
+    {
+       BatteryTempdata[BMSTempIndex] = atoi(BMSdata);
+       //printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
+       ++BMSTempIndex;
+       BMSdataIndex = 0;
+       memset(BMSdata, '\0', BMSData_length);
+    }
+}
+
+void convertBatterySocData_To_Int(int receive_BMSdata, int BatterySOCdata[], char BMSdata[], int BMSData_length)
+{
+    static int BMSSocIndex = 0;
+    
+    if((receive_BMSdata == '\n') && (receive_BMSdata != ','))
+    {
+       BatterySOCdata[BMSSocIndex] = atoi(BMSdata);
+       //printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
+       ++BMSSocIndex;
+       BMSdataIndex = 0;
+       memset(BMSdata, '\0', BMSData_length);
     }
 }
 
