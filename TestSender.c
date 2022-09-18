@@ -7,3 +7,4 @@ int main()
     assert(GenerateSensorData(NULL)==1);
     return 0;
 }
+
