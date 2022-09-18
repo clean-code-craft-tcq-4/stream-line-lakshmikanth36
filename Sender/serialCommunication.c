@@ -29,6 +29,7 @@ int writeToFileDirectory(sensorValue *sensorData)
 	}
 	else
 	{
+		Receiver(BMS_fileDirectory, receiveData, sizeof(receiveData));
 	  //isDataSend_toPIPE = TRUE;
 		return TRUE;
 	}
@@ -46,12 +47,12 @@ void convertInt_To_String(char dataArray[], sensorValue *sensorData)
   	}  
 }
 
-void sender(int fd[], char BMSdatas[], int length)
+void sender(int file_directory[], char BMSdatas[], int length)
 {
-  	close(fd[0]);
+  	close(file_directory[0]);
 		
-	write(fd[1], BMSdatas, length);
+	write(file_directory[1], BMSdatas, length);
 		
-	close(fd[1]);
+	close(file_directory[1]);
 	//printf("sender: %s",BMSdatas);
 }
