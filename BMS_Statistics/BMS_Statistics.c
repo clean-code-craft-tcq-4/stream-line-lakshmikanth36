@@ -36,7 +36,7 @@ int movingAverage_of_Tempdata(int BatteryTempdata[])
        //printf("avg: %d \n",index);
     }
     AvgofTemp /= 5;
-    
+    printf("avg_1: %d ",AvgofTemp);
     return AvgofTemp;
     //printf("avg: %d ",AvgofTemp);
 }
@@ -51,7 +51,7 @@ int movingAverage_of_SOCdata(int BatterySOCdata[])
        //printf("avg: %d \n",index);
     }
     AvgofSoc /= 5;
-    
+    printf("avg_2: %d \n",index);
     return AvgofSoc;
     //printf("avg: %d",AvgofSoc);
 }
