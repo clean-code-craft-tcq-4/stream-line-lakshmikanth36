@@ -33,12 +33,12 @@ int movingAverage_of_Tempdata(int BatteryTempdata[])
     for(int index = MAX_RECEIVE_DATA - 5; index < MAX_RECEIVE_DATA; index++)
     {
        AvgofTemp +=  BatteryTempdata[index];
-       //printf("avg: %d \n",index);
+       
     }
     AvgofTemp /= 5;
     printf("avg_1: %d ",AvgofTemp);
     return AvgofTemp;
-    //printf("avg: %d ",AvgofTemp);
+
 }
 
 int movingAverage_of_SOCdata(int BatterySOCdata[])
@@ -48,12 +48,11 @@ int movingAverage_of_SOCdata(int BatterySOCdata[])
     for(int index = MAX_RECEIVE_DATA - 5; index < MAX_RECEIVE_DATA; index++)
     {
        AvgofSoc +=  BatterySOCdata[index];
-       //printf("avg: %d \n",index);
     }
     AvgofSoc /= 5;
     printf("avg_2: %d \n",index);
     return AvgofSoc;
-    //printf("avg: %d",AvgofSoc);
+    
 }
 
 void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[], int BatterySOCdata[])
