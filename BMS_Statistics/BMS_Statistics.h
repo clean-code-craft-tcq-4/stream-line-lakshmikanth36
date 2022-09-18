@@ -4,9 +4,6 @@
 
 #define   MAX_RECEIVE_DATA   50
 
-int BatteryTempdata[50];
-int BatterySOCdata[50];
-int AvgofTemp = 0, AvgofSOC = 0;
 
 void BMSData_Statistics(char receive_BMSdata[], int datasize);
 int movingAverage_of_Tempdata(int Tempdata[]);
