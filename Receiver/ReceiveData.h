@@ -8,3 +8,4 @@
 #define MAX_NOOF_RECEIVED_BMSDATA  (MAXSENSORCNT * MAX_VALUE * LENGTH_OF_BMSDATA)
 
 void Receiver(int file_directory[]);
+
