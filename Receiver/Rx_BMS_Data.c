@@ -23,15 +23,15 @@ void Receiver(int file_directory[])
 }
 
 
-void ReadData_From_Console(receiveData rx_type)
+void ReadData_From_Console(receiveData rx_type, char ReadBMS_data[])
 {
 	if(rx_type == READ_FROM_PIPE)
 	{
-		Read_from_PIPE();
+		Read_from_PIPE(ReadBMS_data);
 	}
 	else if(rx_type == READ_FROM_MOCK_DATA)
 	{
-		Read_mock_data();
+		Read_mock_data(ReadBMS_data);
 	}
 }
 
