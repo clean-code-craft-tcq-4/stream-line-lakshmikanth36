@@ -16,20 +16,15 @@ int config_PIPE(int *tempFD)
 
 int writeToFileDirectory(sensorValue *sensorData)
 {
-  	char dataArray[MAX_NOOF_BMSDATA];
+  	char BMS_Data[MAX_NOOF_BMSDATA];
 	
 	id = fork();
-	memset(dataArray, '\0', MAX_NOOF_BMSDATA);
-  	for (int dataIndex = 0; dataIndex < MAX_VALUE; dataIndex++) {
-            char tempArray[MAX_VALUE];
-            memset(tempArray, '\0', sizeof(tempArray));
-            sprintf(tempArray, "%d,%d\n", sensorData->Temperature[dataIndex], sensorData->Soc[dataIndex]);
-            strcat(dataArray, tempArray);
-  	}
+	
+	convertInt_To_String(BMS_Data, sensorData);
         
 	if(id > FALSE)
 	{
-		sender(Temp_fileDirectory, dataArray, strlen(dataArray));
+		sender(BMS_fileDirectory, BMS_Data, strlen(BMS_Data));
 		return TRUE;
 	}
 	else
@@ -40,12 +35,23 @@ int writeToFileDirectory(sensorValue *sensorData)
 	return FALSE;
 }
 
-void sender(int fd[], char senderdata[], int length)
+void convertInt_To_String(char dataArray[], sensorValue *sensorData)
+{
+    memset(dataArray, '\0', MAX_NOOF_BMSDATA);
+  	for (int dataIndex = 0; dataIndex < MAX_VALUE; dataIndex++) {
+            char tempArray[LENGTH_OF_BMSDATA];
+            memset(tempArray, '\0', sizeof(tempArray));
+            sprintf(tempArray, "%d,%d\n", sensorData->Temperature[dataIndex], sensorData->Soc[dataIndex]);
+            strcat(dataArray, tempArray);
+  	}  
+}
+
+void sender(int fd[], char BMSdatas[], int length)
 {
   	close(fd[0]);
 		
-	write(fd[1], senderdata, length);
+	write(fd[1], BMSdatas, length);
 		
 	close(fd[1]);
-	printf("sender: %s",senderdata);
+	//printf("sender: %s",BMSdatas);
 }
