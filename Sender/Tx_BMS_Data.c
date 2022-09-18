@@ -3,6 +3,7 @@
 
 int BMS_fileDirectory[2];
 int id; 
+int isDataSend_toPIPE = FALSE;
 
 int config_PIPE(int *tempFD)
 {
@@ -31,7 +32,7 @@ int writeToFileDirectory(sensorValue *sensorData)
 	else
 	{
 		Receiver(BMS_fileDirectory);
-	  //isDataSend_toPIPE = TRUE;
+	  	isDataSend_toPIPE = TRUE;
 		return TRUE;
 	}
 	return FALSE;
@@ -56,6 +57,11 @@ void sender(int file_directory[], char BMSdatas[], int length)
 		
 	close(file_directory[1]);
 	//printf("sender: %s",BMSdatas);
+}
+
+int Get_TransmitStatus()
+{
+	return isDataSend_toPIPE;
 }
 
 int Generate_Transmit_BMS_data(sensorValue *sensorData)
