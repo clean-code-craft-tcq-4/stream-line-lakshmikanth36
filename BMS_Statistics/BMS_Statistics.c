@@ -36,7 +36,7 @@ int movingAverage_of_Tempdata(int BatteryTempdata[])
        
     }
     AvgofTemp /= 5;
-    printf("avg_1: %d ",AvgofTemp);
+    //printf("avg_1: %d ",AvgofTemp);
     return AvgofTemp;
 
 }
@@ -50,7 +50,7 @@ int movingAverage_of_SOCdata(int BatterySOCdata[])
        AvgofSoc +=  BatterySOCdata[index];
     }
     AvgofSoc /= 5;
-    printf("avg_2: %d \n",AvgofSoc);
+    //printf("avg_2: %d \n",AvgofSoc);
     return AvgofSoc;
     
 }
@@ -91,7 +91,7 @@ void convertBatteryTempData_To_Int(int receive_BMSdata, int BatteryTempdata[], c
     if((receive_BMSdata == ',') && (receive_BMSdata != '\n'))
     {
        BatteryTempdata[BMSTempIndex] = atoi(BMSdata);
-       printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
+       //printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
        ++BMSTempIndex;
        BMSdataIndex = 0;
        memset(BMSdata, '\0', BMSData_length);
@@ -105,7 +105,7 @@ void convertBatterySocData_To_Int(int receive_BMSdata, int BatterySOCdata[], cha
     if((receive_BMSdata == '\n') && (receive_BMSdata != ','))
     {
        BatterySOCdata[BMSSocIndex] = atoi(BMSdata);
-       printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
+       //printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
        ++BMSSocIndex;
        BMSdataIndex = 0;
        memset(BMSdata, '\0', BMSData_length);
