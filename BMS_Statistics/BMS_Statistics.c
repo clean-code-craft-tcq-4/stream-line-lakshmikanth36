@@ -50,7 +50,7 @@ int movingAverage_of_SOCdata(int BatterySOCdata[])
        AvgofSoc +=  BatterySOCdata[index];
     }
     AvgofSoc /= 5;
-    printf("avg_2: %d \n",index);
+    printf("avg_2: %d \n",AvgofSoc);
     return AvgofSoc;
     
 }
