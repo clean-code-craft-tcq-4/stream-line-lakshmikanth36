@@ -44,7 +44,7 @@ int ReadData_From_Console(receiveData rx_type, char ReadBMS_data[])
 	{
 		Read_mock_data(ReadBMS_data);
 		BMSData_Statistics(ReadBMS_data, MAX_NOOF_RECEIVED_BMSDATA);
-		return NACK_RX_DATA;
+		return ACK_RX_DATA;
 	}
 }
 
