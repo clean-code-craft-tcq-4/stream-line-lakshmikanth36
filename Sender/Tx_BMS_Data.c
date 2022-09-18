@@ -1,5 +1,5 @@
 #include "Generate_BMS_Data.h"
-#include "Receiver/Rx_BMS_Data.h"
+#include "../Receiver/Rx_BMS_Data.h"
 
 int BMS_fileDirectory[2];
 int id; 
