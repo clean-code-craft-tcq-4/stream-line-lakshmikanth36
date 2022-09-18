@@ -1,5 +1,4 @@
 #include "Rx_BMS_Data.h"
-#include "Sender/Generate_BMS_Data.h"
 
 char receive_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
 
