@@ -29,7 +29,7 @@ int writeToFileDirectory(sensorValue *sensorData)
 	}
 	else
 	{
-		Receiver(BMS_fileDirectory);
+		//Receiver(BMS_fileDirectory);
 	  //isDataSend_toPIPE = TRUE;
 		return TRUE;
 	}
