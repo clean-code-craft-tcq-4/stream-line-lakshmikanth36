@@ -4,11 +4,11 @@
 #include "BMS_Statistics/BMS_Statistics.h"
 
 int Rx_status = FALSE;
-char receive_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
+char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
 
 void Test_Receiver()
 {
-  Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,receive_BMSdata);
+  Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
   assert(Rx_status == ACK_RX_DATA);
 }
 
