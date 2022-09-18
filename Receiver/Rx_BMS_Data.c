@@ -43,6 +43,7 @@ int ReadData_From_Console(receiveData rx_type, char ReadBMS_data[])
 	if(rx_type == READ_FROM_MOCK_DATA)
 	{
 		Read_mock_data(ReadBMS_data);
+		printf("Rx_data: %s",ReadBMS_data);
 		BMSData_Statistics(ReadBMS_data, MAX_NOOF_RECEIVED_BMSDATA);
 		return ACK_RX_DATA;
 	}
