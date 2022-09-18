@@ -2,60 +2,60 @@
 
 static int BMSdataIndex = 0;
 
-void sortGivenIndexPosition(int *BatteryTempdata, int *BatterySOCdata, int noOfElements, int received_position) {
+void sortGivenIndexPosition(int *Tempdata, int *SOCdata, int noOfElements, int received_position) {
 	int temp;
 	
 	for(int index = received_position+1 ; index < noOfElements; index++) {
-	if(BatteryTempdata[received_position] > BatteryTempdata[index]) {
-	temp = BatteryTempdata[received_position];
-     	BatteryTempdata[received_position] = BatteryTempdata[index];
-     	BatteryTempdata[index] = temp;
+	if(Tempdata[received_position] > Tempdata[index]) {
+	temp = Tempdata[received_position];
+     	Tempdata[received_position] = Tempdata[index];
+     	Tempdata[index] = temp;
    	}
    	
-   	if(BatterySOCdata[received_position] > BatterySOCdata[index]) {
-	temp = BatterySOCdata[received_position];
-     	BatterySOCdata[received_position] = BatterySOCdata[index];
-     	BatterySOCdata[index] = temp;
+   	if(SOCdata[received_position] > SOCdata[index]) {
+	temp = SOCdata[received_position];
+     	SOCdata[received_position] = SOCdata[index];
+     	SOCdata[index] = temp;
    	}
  	}
 }
 
-void sortBmsData(int BatteryTempdata[], int BatterySOCdata[]) {
+void sortBmsData(int Tempdata[], int SOCdata[]) {
   	for(int index = 0; index < MAX_RECEIVE_DATA; index++) {
-    	sortGivenIndexPosition(BatteryTempdata, BatterySOCdata,  MAX_RECEIVE_DATA, index); 
+    	sortGivenIndexPosition(Tempdata, SOCdata,  MAX_RECEIVE_DATA, index); 
   	}
 }
 
-int movingAverage_of_Tempdata(int BatteryTempdata[])
+int movingAverage_of_Tempdata(int Tempdata[])
 {
-    int AvgofTemp = 0;
+    int Avg_of_Temp = 0;
     
     for(int index = MAX_RECEIVE_DATA - 5; index < MAX_RECEIVE_DATA; index++)
     {
-       AvgofTemp +=  BatteryTempdata[index];
+       Avg_of_Temp +=  Tempdata[index];
        
     }
-    AvgofTemp /= 5;
-    //printf("avg_1: %d ",AvgofTemp);
-    return AvgofTemp;
+    Avg_of_Temp /= 5;
+    //printf("avg_1: %d ",Avg_of_Temp);
+    return Avg_of_Temp;
 
 }
 
-int movingAverage_of_SOCdata(int BatterySOCdata[])
+int movingAverage_of_SOCdata(int SOCdata[])
 {
-    int AvgofSoc = 0;
+    int Avg_of_Soc = 0;
     
     for(int index = MAX_RECEIVE_DATA - 5; index < MAX_RECEIVE_DATA; index++)
     {
-       AvgofSoc +=  BatterySOCdata[index];
+       Avg_of_Soc +=  SOCdata[index];
     }
-    AvgofSoc /= 5;
-    //printf("avg_2: %d \n",AvgofSoc);
-    return AvgofSoc;
+    Avg_of_Soc /= 5;
+    //printf("avg_2: %d \n",Avg_of_Soc);
+    return Avg_of_Soc;
     
 }
 
-void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[], int BatterySOCdata[])
+void convertString_To_Int(char receive_BMSdata[], int len, int Battery_Tempdata[], int Battery_SOCdata[])
 {
     int index;
     char BMSdata[4];
@@ -73,9 +73,9 @@ void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[]
                 //printf("%c",BMSdata[BMSdataIndex]);
                 BMSdataIndex++;
             }
-            convertBatteryTempData_To_Int(receive_BMSdata[index], BatteryTempdata, BMSdata, sizeof(BMSdata));
+            convertBatteryTempData_To_Int(receive_BMSdata[index], Battery_Tempdata, BMSdata, sizeof(BMSdata));
 		
-	    convertBatterySocData_To_Int(receive_BMSdata[index], BatterySOCdata, BMSdata, sizeof(BMSdata));
+	    convertBatterySocData_To_Int(receive_BMSdata[index], Battery_SOCdata, BMSdata, sizeof(BMSdata));
         }
         else
         {
@@ -84,37 +84,37 @@ void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[]
     }
 }
 
-void convertBatteryTempData_To_Int(int receive_BMSdata, int BatteryTempdata[], char BMSdata[], int BMSData_length)
+void convertBatteryTempData_To_Int(int receive_BMSdata, int Tempdata[], char BMSdata[], int BMSData_length)
 {
     static int BMSTempIndex = 0;
     
     if((receive_BMSdata == ',') && (receive_BMSdata != '\n'))
     {
-       BatteryTempdata[BMSTempIndex] = atoi(BMSdata);
-       //printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
+       Tempdata[BMSTempIndex] = atoi(BMSdata);
+       //printf("Temp: %d \n",Tempdata[BMSTempIndex]);
        ++BMSTempIndex;
        BMSdataIndex = 0;
        memset(BMSdata, '\0', BMSData_length);
     }
 }
 
-void convertBatterySocData_To_Int(int receive_BMSdata, int BatterySOCdata[], char BMSdata[], int BMSData_length)
+void convertBatterySocData_To_Int(int receive_BMSdata, int SOCdata[], char BMSdata[], int BMSData_length)
 {
     static int BMSSocIndex = 0;
     
     if((receive_BMSdata == '\n') && (receive_BMSdata != ','))
     {
-       BatterySOCdata[BMSSocIndex] = atoi(BMSdata);
-       //printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
+       SOCdata[BMSSocIndex] = atoi(BMSdata);
+       //printf("SOC: %d \n",SOCdata[BMSSocIndex]);
        ++BMSSocIndex;
        BMSdataIndex = 0;
        memset(BMSdata, '\0', BMSData_length);
     }
 }
 
-void print_movingAvgData(int AvgOfTemp, int AvgOfSoc)
+void print_movingAvgData(int Avg_Of_Temp, int Avg_Of_Soc)
 {
-	printf("Avg of Temp: %d Soc: %d\n",AvgOfTemp,AvgOfSoc);
+	printf("Avg of Temp: %d Soc: %d\n",Avg_Of_Temp,Avg_Of_Soc);
 }
 
 void print_Temp_MinMaxData(int minTempData, int maxTempData)
