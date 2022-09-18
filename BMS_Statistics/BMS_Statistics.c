@@ -26,21 +26,32 @@ void sortBmsData(int BatteryTempdata[], int BatterySOCdata[]) {
   	}
 }
 
-void movingAverage_of_BMSdata(int BatteryTempdata[], int BatterySOCdata[])
+int movingAverage_of_Tempdata(int BatteryTempdata[])
 {
     int AvgofTemp = 0;
-    int AvgofSoc = 0;
     
     for(int index = MAX_RECEIVE_DATA - 5; index < MAX_RECEIVE_DATA; index++)
     {
        AvgofTemp +=  BatteryTempdata[index];
-       AvgofSoc +=  BatterySOCdata[index];
        //printf("avg: %d \n",index);
     }
     AvgofTemp /= 5;
+    
+    //printf("avg: %d ",AvgofTemp);
+}
+
+int movingAverage_of_SOCdata(int BatterySOCdata[])
+{
+    int AvgofSoc = 0;
+    
+    for(int index = MAX_RECEIVE_DATA - 5; index < MAX_RECEIVE_DATA; index++)
+    {
+       AvgofSoc +=  BatterySOCdata[index];
+       //printf("avg: %d \n",index);
+    }
     AvgofSoc /= 5;
     
-    printf("avg: %d %d",AvgofTemp,AvgofSoc);
+    //printf("avg: %d",AvgofSoc);
 }
 
 void convertString_To_Int(char receive_BMSdata[], int len, int BatteryTempdata[], int BatterySOCdata[])
@@ -100,14 +111,37 @@ void convertBatterySocData_To_Int(int receive_BMSdata, int BatterySOCdata[], cha
     }
 }
 
+void print_movingAvgData(int AvgOfTemp, int AvgOfSoc)
+{
+	printf("Avg of Temp: %d Soc: %d\n",AvgOfTemp,AvgOfSoc);
+}
+
+void print_Temp_MinMaxData(int minTempData, int maxTempData)
+{
+	printf("Temp min value: %d max value: %d\n", minTempData, maxTempData);
+}
+
+void print_Soc_MinMaxData(int minSocData, int maxSocData)
+{
+	printf("Soc min value: %d max value: %d\n", minSocData, maxSocData);
+}
+
 void BMSData_Statistics(char receive_BMSdata[], int datasize)
 {
     int BatteryTempdata[50];
     int BatterySOCdata[50];
+    int AvgofTemp = 0, AvgofSOC = 0;;
     
     convertString_To_Int(receive_BMSdata,datasize,BatteryTempdata,BatterySOCdata);
-    movingAverage_of_BMSdata(BatteryTempdata, BatterySOCdata);
+	
+    AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
+    AvgofSOC = movingAverage_of_SOCdata(BatterySOCdata);
+	
+    print_movingAvgData(AvgofTemp, AvgofSOC);
+	
     sortBmsData(BatteryTempdata, BatterySOCdata);
-    printf("Temp_M: %d %d\n",BatteryTempdata[0],BatteryTempdata[MAX_RECEIVE_DATA-1]);
-    printf("Soc_M: %d %d\n",BatterySOCdata[0],BatterySOCdata[MAX_RECEIVE_DATA-1]);
+	
+    print_Temp_MinMaxData(BatteryTempdata[0],BatteryTempdata[MAX_RECEIVE_DATA-1]);
+    print_Soc_MinMaxData(BatterySOCdata[0],BatterySOCdata[MAX_RECEIVE_DATA-1]);
+	
 }
