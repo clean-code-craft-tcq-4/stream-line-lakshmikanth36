@@ -9,6 +9,7 @@ char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
 void Test_Receiver()
 {
   Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
+  printf("Rx_test: %s",Rx_BMSdata);
   assert(Rx_status == ACK_RX_DATA);
 }
 
