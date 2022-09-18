@@ -1,4 +1,5 @@
 #include "Generate_BMS_Data.h"
+#include "Receiver/Rx_BMS_Data.h"
 
 int BMS_fileDirectory[2];
 int id; 
@@ -29,7 +30,7 @@ int writeToFileDirectory(sensorValue *sensorData)
 	}
 	else
 	{
-		//Receiver(BMS_fileDirectory);
+		Receiver(BMS_fileDirectory);
 	  //isDataSend_toPIPE = TRUE;
 		return TRUE;
 	}
