@@ -92,7 +92,7 @@ void convertBatteryTempData_To_Int(int receive_BMSdata, int BatteryTempdata[], c
     if((receive_BMSdata == ',') && (receive_BMSdata != '\n'))
     {
        BatteryTempdata[BMSTempIndex] = atoi(BMSdata);
-       //printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
+       printf("Temp: %d \n",BatteryTempdata[BMSTempIndex]);
        ++BMSTempIndex;
        BMSdataIndex = 0;
        memset(BMSdata, '\0', BMSData_length);
@@ -106,7 +106,7 @@ void convertBatterySocData_To_Int(int receive_BMSdata, int BatterySOCdata[], cha
     if((receive_BMSdata == '\n') && (receive_BMSdata != ','))
     {
        BatterySOCdata[BMSSocIndex] = atoi(BMSdata);
-       //printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
+       printf("SOC: %d \n",BatterySOCdata[BMSSocIndex]);
        ++BMSSocIndex;
        BMSdataIndex = 0;
        memset(BMSdata, '\0', BMSData_length);
