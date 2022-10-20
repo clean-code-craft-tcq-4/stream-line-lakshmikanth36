@@ -32,7 +32,7 @@ int ReadData_From_Console(receiveData rx_type, char ReadBMS_data[])
 	if((rx_type == READ_FROM_PIPE) && (Tx_Status == ACK_RX_DATA))
 	{
 		Read_from_PIPE(ReadBMS_data);
-		BMSData_Statistics(ReadBMS_data, MAX_NOOF_RECEIVED_BMSDATA);
+		//BMSData_Statistics(ReadBMS_data, MAX_NOOF_RECEIVED_BMSDATA);
 		return ACK_RX_DATA;
 	}
 	else if(rx_type == READ_FROM_PIPE)
@@ -44,7 +44,7 @@ int ReadData_From_Console(receiveData rx_type, char ReadBMS_data[])
 	{
 		Read_mock_data(ReadBMS_data);
 		//printf("Rx_data: %s",ReadBMS_data);
-		BMSData_Statistics(ReadBMS_data, MAX_NOOF_RECEIVED_BMSDATA);
+		//BMSData_Statistics(ReadBMS_data, MAX_NOOF_RECEIVED_BMSDATA);
 		return ACK_RX_DATA;
 	}
 }
