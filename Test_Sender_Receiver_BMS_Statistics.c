@@ -33,7 +33,7 @@ void Test_BMSStatics()
 }
 
 void convertBMS_dataFormat() {
-    convertString_To_Int(receive_BMSdata, MAX_NOOF_RECEIVED_BMSDATA, BatteryTempdata, BatterySOCdata);
+    convertString_To_Int(Received_BMSdata, MAX_NOOF_RECEIVED_BMSDATA, BatteryTempdata, BatterySOCdata);
 
     for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
     {
