@@ -6,17 +6,12 @@
 #include <stdlib.h>
 #include <math.h>
 
+int BMS_fileDirectory[2];
+
 sensorValue sensorData = {{'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'},
                           {'\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0','\0'}};
 
 TEST_CASE("Generate BMS temperature and soc data") {
-    
-    /*for(int i=0; i<MAX_VALUE; i++)
-    {
-        	sensorData.Temperature[i] = '\0';
-        	sensorData.Soc[i] = '\0';
-    }*/
-    
     GenerateSensorData(sensorData);
     
     for(int i=0; i<MAX_VALUE; i++)
@@ -24,6 +19,10 @@ TEST_CASE("Generate BMS temperature and soc data") {
         	REQUIRE(sensorData.Temperature[i] != '\0');
         	REQUIRE(sensorData.Soc[i] != '\0');
     }
-    
-    //REQUIRE(isDataGenerated == DATA_OK);
+}
+
+TEST_CASE("config PIPE for data Tx") {
+    int isPIPEconfigured = config_PIPE(sensorData);
+  
+    REQUIRE(isPIPEconfigured == TRUE);
 }
