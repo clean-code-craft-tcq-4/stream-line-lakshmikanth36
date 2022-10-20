@@ -37,7 +37,7 @@ void abc() {
     
     AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
     
-    REQUIRE(AvgofTemp == 33);
+    assert(AvgofTemp == 33);
     /*for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
     {
       assert(BatteryTempdata[BMSdata] == convertedTempdata[BMSdata]);
