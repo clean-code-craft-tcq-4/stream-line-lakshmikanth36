@@ -6,6 +6,10 @@
 #include <stdlib.h>
 #include <math.h>
 
-TEST_CASE("test") {
-    
+int Rx_status = FALSE;
+char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
+
+TEST_CASE("Read mock BMS data") {
+    Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
+    REQUIRE(Rx_status == ACK_RX_DATA);
 }
