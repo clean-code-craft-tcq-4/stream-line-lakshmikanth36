@@ -6,13 +6,35 @@
 int Rx_status = FALSE;
 char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
 
-/*(void Test_Receiver()
+void Test_Receiver()
 {
-  Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
-  assert(Rx_status == ACK_RX_DATA);
-}*/
+  ReadMock_BMSdata();
+  Read_realTime_data();
+}
 
-/*int main()
+void ReadMock_BMSdata() {
+    Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA] = {"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"};
+    Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
+    
+    for(int BMSdata = 0; BMSdata < 200; BMSdata++)
+    {
+        assert(Rx_BMSdata[BMSdata] == '\0');
+    }
+    assert(Rx_status == ACK_RX_DATA);
+}
+
+void Read_realTime_data() {
+    Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA] = {"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"};
+    Rx_status = ReadData_From_Console(READ_FROM_PIPE,Rx_BMSdata);
+    
+    for(int BMSdata = 0; BMSdata < MAX_NOOF_RECEIVED_BMSDATA; BMSdata++)
+    {
+        assert(Rx_BMSdata[BMSdata] == '\0');
+    }
+    assert(Rx_status == NACK_RX_DATA);
+}
+
+int main()
 {
   Test_Receiver();
-}*/
+}
