@@ -67,6 +67,6 @@ void Read_realTime_data() {
 
 int main()
 {
-  Test_Receiver();
   Test_BMSStatics();
+  Test_Receiver();
 }
