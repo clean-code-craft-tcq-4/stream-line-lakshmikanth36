@@ -6,11 +6,11 @@
 int Rx_status = FALSE;
 char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
 
-void Test_Receiver()
+/*(void Test_Receiver()
 {
   Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
   assert(Rx_status == ACK_RX_DATA);
-}
+}*/
 
 /*int main()
 {
