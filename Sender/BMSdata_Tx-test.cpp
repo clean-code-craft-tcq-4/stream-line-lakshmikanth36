@@ -26,3 +26,9 @@ TEST_CASE("config PIPE for data Tx") {
   
     REQUIRE(isPIPEconfigured == TRUE);
 }
+
+TEST_CASE("Get data Tx status: It fails becasue data is not Tx in PIPE") {
+    int getTxstatus = Get_TransmitStatus();
+  
+    REQUIRE(getTxstatus == FALSE);
+}
