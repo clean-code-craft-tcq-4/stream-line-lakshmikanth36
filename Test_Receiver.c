@@ -5,7 +5,6 @@
 
 void ReadMock_BMSdata();
 void Read_realTime_data();
-void convertBMS_dataFormat();
 
 
 int Rx_status = FALSE;
@@ -28,16 +27,19 @@ int SortedSOCdata[MAX_RECEIVE_DATA] = {0,1,2,5,6,7,8,8,9,10,12,14,15,17,17,18,18
 
 void Test_Receiver()
 {
-  ReadMock_BMSdata();
-  Read_realTime_data();
+  Test_ReadMock_BMSdata();
+  Test_Read_realTimeData();
 }
 
 void Test_BMS_Statistics()
 {
-  convertBMS_dataFormat();
+  TestBMS_dataFormatConvertion();
+  TestmovingAvg_BMSTempdata();
+  TestmovingAvg_BMSSOCdata();
+  TestBMS_MinMaxdata();
 }
 
-void convertBMS_dataFormat() {
+void TestBMS_dataFormatConvertion() {
     convertString_To_Int(Received_BMSdata, MAX_NOOF_RECEIVED_BMSDATA, BatteryTempdata, BatterySOCdata);
     
     for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
@@ -48,19 +50,36 @@ void convertBMS_dataFormat() {
     }
 }
 
-void ReadMock_BMSdata() {
-    //char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA] = {"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"};
-  char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];  
-  Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
+void TestmovingAvg_BMSTempdata() {
+    AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
     
-    /*for(int BMSdata = 0; BMSdata < 200; BMSdata++)
-    {
-        assert(Rx_BMSdata[BMSdata] != '\0');
-    }*/
-    assert(Rx_status == ACK_RX_DATA);
+    assert(AvgofTemp == 33);
 }
 
-void Read_realTime_data() {
+void TestmovingAvg_BMSSOCdata() {
+    AvgofTemp = movingAverage_of_SOCdata(BatterySOCdata);
+    
+    assert(AvgofTemp == 23);
+}
+
+void TestBMS_MinMaxdata() {
+    sortBmsData(BatteryTempdata, BatterySOCdata);
+    
+    assert(BatteryTempdata[0] == SortedTempdata[0]);
+    assert(BatteryTempdata[MAX_RECEIVE_DATA-1] == SortedTempdata[MAX_RECEIVE_DATA-1]);
+    
+    assert(BatterySOCdata[0] == SortedSOCdata[0]);
+    assert(BatterySOCdata[MAX_RECEIVE_DATA-1] == SortedSOCdata[MAX_RECEIVE_DATA-1]);
+}
+
+void Test_ReadMock_BMSdata() {
+  char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];  
+  Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
+  
+  assert(Rx_status == ACK_RX_DATA);
+}
+
+void Test_Read_realTimeData() {
     char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA] = {"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"};
     Rx_status = ReadData_From_Console(READ_FROM_PIPE,Rx_BMSdata);
     
