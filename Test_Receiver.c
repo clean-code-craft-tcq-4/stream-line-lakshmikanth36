@@ -3,8 +3,13 @@
 #include "Receiver/Rx_BMS_Data.h"
 #include "BMS_Statistics/BMS_Statistics.h"
 
-void ReadMock_BMSdata();
-void Read_realTime_data();
+void Test_ReadMock_BMSdata();
+void Test_Read_realTimeData();
+void TestBMS_dataFormatConvertion();
+void TestmovingAvg_BMSTempdata();
+void TestmovingAvg_BMSSOCdata();
+void TestBMS_MinMaxdata();
+
 
 
 int Rx_status = FALSE;
