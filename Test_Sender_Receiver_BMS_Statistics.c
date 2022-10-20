@@ -20,7 +20,7 @@ void ReadMock_BMSdata() {
     
     for(int BMSdata = 0; BMSdata < 200; BMSdata++)
     {
-        assert(Rx_BMSdata[BMSdata] == '\0');
+        assert(Rx_BMSdata[BMSdata] != '\0');
     }
     assert(Rx_status == ACK_RX_DATA);
 }
