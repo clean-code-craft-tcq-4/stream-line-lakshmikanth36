@@ -45,14 +45,14 @@ TEST_CASE("Moving average of BMS SOC data") {
     REQUIRE(AvgofTemp == 23);
 }
 
-TEST_CASE("sort bms temp and soc data") {
+TEST_CASE("Get BMS min and max temp and soc data") {
     sortBmsData(BatteryTempdata, BatterySOCdata);
     
-    for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
-    {
-      REQUIRE(BatteryTempdata[BMSdata] == SortedTempdata[BMSdata]);
-      REQUIRE(BatterySOCdata[BMSdata] == SortedSOCdata[BMSdata]);
-    }
+    REQUIRE(BatteryTempdata[0] == SortedTempdata[0]);
+    REQUIRE(BatteryTempdata[MAX_RECEIVE_DATA] == SortedTempdata[MAX_RECEIVE_DATA-1]);
+    
+    REQUIRE(BatterySOCdata[0] == SortedSOCdata[0]);
+    REQUIRE(BatterySOCdata[MAX_RECEIVE_DATA] == SortedSOCdata[MAX_RECEIVE_DATA-1]);
 }
 
 
