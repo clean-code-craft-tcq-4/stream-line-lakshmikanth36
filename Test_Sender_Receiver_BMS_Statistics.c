@@ -4,7 +4,9 @@
 #include "BMS_Statistics/BMS_Statistics.h"
 
 int Rx_status = FALSE;
-//char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];
+
+void ReadMock_BMSdata();
+void Read_realTime_data();
 
 void Test_Receiver()
 {
