@@ -78,9 +78,13 @@ void TestBMS_MinMaxdata() {
 }
 
 void Test_ReadMock_BMSdata() {
-  char Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA];  
+  Rx_BMSdata[MAX_NOOF_RECEIVED_BMSDATA] = {"\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"};
   Rx_status = ReadData_From_Console(READ_FROM_MOCK_DATA,Rx_BMSdata);
-  
+    
+  for(int BMSdata = 0; BMSdata < 200; BMSdata++)
+  {
+     assert(Rx_BMSdata[BMSdata] != '\0');
+  }
   assert(Rx_status == ACK_RX_DATA);
 }
 
