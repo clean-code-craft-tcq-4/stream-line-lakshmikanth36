@@ -6,8 +6,23 @@
 #include <stdlib.h>
 #include <math.h>
 
+sensorValue sensorData;
 
-TEST_CASE("test") {
+TEST_CASE("Generate BMS temperature and soc data") {
     
-    //REQUIRE(Rx_status == ACK_RX_DATA);
+    for(int i=0; i<MAX_VALUE; i++)
+    {
+        	sensorData.Temperature[i] = '\0';
+        	sensorData.Soc[i] = '\0';
+    }
+    
+    GenerateSensorData(sensorData);
+    
+    for(int i=0; i<MAX_VALUE; i++)
+    {
+        	REQUIRE(sensorData.Temperature[i] != '\0');
+        	REQUIRE(sensorData.Soc[i] != '\0');
+    }
+    
+    //REQUIRE(isDataGenerated == DATA_OK);
 }
