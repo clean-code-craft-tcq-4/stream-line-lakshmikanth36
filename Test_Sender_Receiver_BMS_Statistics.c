@@ -12,7 +12,7 @@ void Test_Receiver()
   assert(Rx_status == ACK_RX_DATA);
 }
 
-int main()
+/*int main()
 {
   Test_Receiver();
-}
+}*/
