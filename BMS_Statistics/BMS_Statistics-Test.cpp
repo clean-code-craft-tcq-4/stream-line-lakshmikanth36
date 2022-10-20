@@ -29,3 +29,15 @@ TEST_CASE("converting BMS string data into init which is received through PIPE")
       REQUIRE(BatterySOCdata[BMSdata] == convertedSOCdata[BMSdata]);
     }
 }
+
+TEST_CASE("Moving average of BMS temperature data") {
+    AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
+    
+    REQUIRE(AvgofTemp == 33);
+}
+
+TEST_CASE("Moving average of BMS SOC data") {
+    AvgofTemp = movingAverage_of_SOCdata(BatterySOCdata);
+    
+    REQUIRE(AvgofTemp == 23);
+}
