@@ -22,7 +22,7 @@ TEST_CASE("Generate BMS temperature and soc data") {
 }
 
 TEST_CASE("config PIPE for data Tx") {
-    int isPIPEconfigured = config_PIPE(sensorData);
+    int isPIPEconfigured = config_PIPE(BMS_fileDirectory);
   
     REQUIRE(isPIPEconfigured == TRUE);
 }
