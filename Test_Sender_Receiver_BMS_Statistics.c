@@ -39,7 +39,7 @@ void convertBMS_dataFormat() {
     {
       //assert(BatteryTempdata[BMSdata] == convertedTempdata[BMSdata]);
       //assert(BatterySOCdata[BMSdata] == convertedSOCdata[BMSdata]);
-      printf("Bat %d\n",BatteryTempdata[BMSdata]);
+      printf("Bat %d\n",Received_BMSdata[BMSdata]);
     }
 }
 
