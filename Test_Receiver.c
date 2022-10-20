@@ -39,6 +39,7 @@ void abc() {
     {
       assert(BatteryTempdata[BMSdata] == convertedTempdata[BMSdata]);
       assert(BatterySOCdata[BMSdata] == convertedSOCdata[BMSdata]);
+      printf("bat: %d\n",BatteryTempdata[BMSdata]);
     }
 }
 
@@ -67,5 +68,5 @@ void Read_realTime_data() {
 int main()
 {
   Test_Receiver();
-  void abc();
+  abc();
 }
