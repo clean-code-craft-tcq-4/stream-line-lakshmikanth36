@@ -16,7 +16,7 @@ TEST_CASE("Generate BMS temperature and soc data") {
     
     for(int i=0; i<MAX_VALUE; i++)
     {
-        	REQUIRE(sensorData.Temperature[i] != '\0');
+        	REQUIRE(sensorData.Temperature[i] == '\0');
         	REQUIRE(sensorData.Soc[i] != '\0');
     }
 }
