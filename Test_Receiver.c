@@ -32,12 +32,14 @@ void Test_Receiver()
   Read_realTime_data();
 }
 
-void abc() {
+void Test_BMS_Statistics()
+{
+  convertBMS_dataFormat();
+}
+
+void convertBMS_dataFormat() {
     convertString_To_Int(Received_BMSdata, MAX_NOOF_RECEIVED_BMSDATA, BatteryTempdata, BatterySOCdata);
     
-    //AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
-    
-    //assert(AvgofTemp == 33);
     for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
     {
       assert(BatteryTempdata[BMSdata] == convertedTempdata[BMSdata]);
@@ -72,5 +74,5 @@ void Read_realTime_data() {
 int main()
 {
   Test_Receiver();
-  abc();
+  Test_BMS_Statistics();
 }
