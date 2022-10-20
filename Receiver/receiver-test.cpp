@@ -15,7 +15,7 @@ TEST_CASE("Read mock BMS data") {
     
     for(int BMSdata = 0; BMSdata < 200; BMSdata++)
     {
-        REQUIRE(Rx_BMSdata[BMSdata] != '\0');
+        REQUIRE(Rx_BMSdata[BMSdata] == '\0');
     }
     REQUIRE(Rx_status == ACK_RX_DATA);
 }
