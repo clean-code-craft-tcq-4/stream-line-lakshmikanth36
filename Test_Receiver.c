@@ -35,15 +35,15 @@ void Test_Receiver()
 void abc() {
     convertString_To_Int(Received_BMSdata, MAX_NOOF_RECEIVED_BMSDATA, BatteryTempdata, BatterySOCdata);
     
-    AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
+    //AvgofTemp = movingAverage_of_Tempdata(BatteryTempdata);
     
-    assert(AvgofTemp == 33);
-    /*for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
+    //assert(AvgofTemp == 33);
+    for(int BMSdata = 0; BMSdata < MAX_RECEIVE_DATA; BMSdata++)
     {
       assert(BatteryTempdata[BMSdata] == convertedTempdata[BMSdata]);
       assert(BatterySOCdata[BMSdata] == convertedSOCdata[BMSdata]);
       printf("bat: %d\n",BatteryTempdata[BMSdata]);
-    }*/
+    }
 }
 
 void ReadMock_BMSdata() {
